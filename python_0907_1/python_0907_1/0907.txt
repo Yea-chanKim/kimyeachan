@@ -65,3 +65,6 @@ unsortedList.reverse()
 top5List = unsortedList[0:5]
 print(top5List)
 '''
+
+튜플은 리스트와 비슷한 자료형이다. 다른점은 튜플은 값에 대한 변화가 불가능하다는것이다.
+

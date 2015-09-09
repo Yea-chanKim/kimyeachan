@@ -1,5 +1,5 @@
 ﻿
-#vs 는 cp949로 인코딩 모드가 되어있다.
+#vs 는 cp949(MS949)로 인코딩 모드가 되어있다.
 '''
 data = ['a','b','c',['abcd','efg']]
 
@@ -57,11 +57,49 @@ for student in ListId: # 리스트에 해당하는 값을 하나씩 가져오는
     print(student)
 '''
 
-''' 상위 5개의 항목 출력 
+''' #상위 5개의 항목 출력 
 unsortedList =  [31,32,5,3,1,7,99]
 unsortedList.sort()
 unsortedList.reverse()
 
 top5List = unsortedList[0:5]
 print(top5List)
+'''
+
+''' #리스트안의 리스트들도 순차대로 출력을 하기 위해 isinstance 함수를 사용한다. 해당 타입의 인스턴스인지를 확인한다. argument -> (object, type)
+list1 = [1,2,3,['a','b','c']]
+
+for steps in list1:
+    if isinstance(steps,list) :
+        for step in steps :
+            print(step)
+    else:
+        print(steps)
+     
+'''
+'''
+list1 = [1,2,3]
+
+list1.extend([4,5]) # append로 할 경우에는 인자 그대로를 넣게 되므로 리스트타입으로 들어가게 된다. 
+
+print(list1)
+'''
+
+'''
+#튜플은 왜 사용하는 가? - 값 변경(c std의 swap함수), 함수에서의 튜플 사용에 유용하다. 
+list1 = [1,2,3,(1,3)]
+
+t1 = (1,2)
+t2 = (3,4)
+
+t1 = t2
+print(t1)
+
+a = 3 
+b = 5
+
+a,b = b,a # 등호를 기준으로 튜플로 나눠진 변수에서 값 변경이 일어난다. (a,b) 튜플 (b,a) 튜플 
+
+print(a)
+print(b)
 '''
