@@ -42,14 +42,14 @@ from urllib.parse import urljoin
 ##for i in range(len(cartoons)):
 ##    title = cartoons[i].find('a').string
 ##    ref = cartoons[i].find('a')['href']
-##    tempurl= urljoin(url, ref)
+##    tempurl= urljoin(url, ref) # url과 얻은 href 를 연결해준다.
 ##    print(title, "\t" , tempurl)
-##    #webbrowser.open_new(tempurl)
+##    #webbrowser.open_new(tempurl) # url을 web으로 열기 
 
 ##웹 크롤러 만들기 예제
 
 class crawler:
-    def crawl(self, pages, depth=2):
+    def crawl(self, pages, depth=2): # 깊이만큼 page의 링크를 몇번 타고 들어갈것인지
         for i in range(depth):
             newpage= set()
             for page in pages:
@@ -61,17 +61,16 @@ class crawler:
                 soup = BeautifulSoup(c.read(), 'html.parser')
                 print('Found %s' % page)
                 
-                links = soup('a')
+                links = soup('a') # a태그를 모두 가져옴 
                 for link in links:
-                     if('href' in dict(link.attrs)):
-                        url= urljoin(page, link['href'])
+                     if('href' in dict(link.attrs)): # a태그의 href 속성이 있는지 확인 
+                        url= urljoin(page, link['href']) # href 태그의 값과 현재 page를 연결 
                         if url.find("'")!=-1 : continue
-                        url= url.split("#")[0]
+                        url= url.split("#")[0] # #을 포함할 경우 앞부분이 주소?
                         if url[0:4]=='http':
-                            newpage.add(url)
+                            newpage.add(url) 
                 pages = newpage
 
 pagelist=['http://www.naver.com']
 crawler=crawler()
 crawler.crawl(pagelist)
-print(pagelist)
