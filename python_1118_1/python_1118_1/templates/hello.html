@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Greenjoa</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+</head>
+<body>
+    {% block body %}
+    {%endblock %}
+
+
+    {% if name %}
+        <h1> {{name}}</h1>
+    {% else %}
+        <h1> Hello 황대기!</h1>
+    {% endif %}
+
+    {% for item in items%}
+    <li><a href="{{item.href}}">{{item.caption}}</a></li>
+    {% endfor%}
+</body>
+</html>
